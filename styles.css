@@ -1,4 +1,39 @@
-/* Sets all the text color to red! */
-body {
-    color: red;
+.codeblock-with-copy-button {
+    position: relative;
 }
+
+.theme-light .codeblock-copy-button {
+    border-color: #e6e4e0;
+    background-color: #eae9e5;
+}
+
+.theme-light .codeblock-copy-button:hover {
+    background-color: #e6e4e0;
+}
+
+.theme-dark .codeblock-copy-button {
+    border-color: #333333;
+    background-color: #333333;
+}
+
+.theme-dark .codeblock-copy-button:hover {
+    background-color: #414141;
+}
+
+.codeblock-copy-button {
+    /*transition: 0.25s all ease-in-out;
+    opacity: 0;*/
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: small;
+    padding: 3px;
+}
+/*
+.codeblock-with-copy-button:hover .codeblock-copy-button{
+    opacity: 1;
+}*/
