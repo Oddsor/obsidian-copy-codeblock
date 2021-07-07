@@ -21,8 +21,8 @@
 }
 
 .codeblock-copy-button {
-    /*transition: 0.25s all ease-in-out;
-    opacity: 0;*/
+    transition: 0.25s all ease-in-out;
+    opacity: 0;
     position: absolute;
     top: 5px;
     right: 5px;
@@ -33,7 +33,7 @@
     font-size: small;
     padding: 3px;
 }
-/*
+
 .codeblock-with-copy-button:hover .codeblock-copy-button{
     opacity: 1;
-}*/
+}
