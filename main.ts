@@ -9,6 +9,8 @@ export default class MyPlugin extends Plugin {
         console.log('loading plugin: copy code block');
 
         this.registerMarkdownPostProcessor(async (el, ctx) => {
+            // If there are more than one children in the code block, it is safe to assume
+            // that this is not a simple code block, so we should not add a button
             if (el.children.length === 1 && el.children[0].tagName === 'PRE') {
                 const content = el.textContent;
                 el.addClass('codeblock-with-copy-button');
