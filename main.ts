@@ -1,7 +1,7 @@
 import { Notice, Plugin } from 'obsidian';
 
-const copiedCodeBlock = () => {
-    new Notice('Code copied!');
+const notify = (text: string) => {
+    new Notice(text);
 };
 
 export default class MyPlugin extends Plugin {
@@ -18,10 +18,24 @@ export default class MyPlugin extends Plugin {
                 copyButton.addClass('codeblock-copy-button');
                 copyButton.setText('Copy');
                 copyButton.onclick = _ => {
+                    const preNode = el.find('pre').cloneNode(true) as HTMLElement;
                     // This regex replace removes a trailing newline that 
-                    // is automatically added to textContent in code blocks
-                    navigator.clipboard.writeText(content.replace(/\n$/, ""));
-                    copiedCodeBlock();
+                    // is automatically added to the condend of code blocks
+                    preNode.find('code').innerHTML = preNode.find('code').innerHTML.replace(/\n$/, '');
+
+                    var htmlblob = new Blob([preNode.outerHTML], { type: 'text/html' });
+                    // For the text-copy, apply a trim to remove leading and trailing whitespace
+                    var textblob = new Blob([content.replace(/\n$/, '')], { type: 'text/plain' });
+                    var data = [new ClipboardItem({ 'text/html': htmlblob, 'text/plain': textblob })];
+
+                    navigator.clipboard.write(data).then(
+                        function () {
+                            notify('Code copied to clipboard!');
+                        },
+                        function () {
+                            notify('Failed to copy code to clipboard!');
+                        }
+                    );
                 }
             }
         });
