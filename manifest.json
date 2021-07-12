@@ -1,7 +1,7 @@
 {
 	"id": "obsidian-copy-codeblock",
 	"name": "Copy Code Block",
-	"version": "0.10.0",
+	"version": "1.0.0",
 	"minAppVersion": "0.9.12",
 	"description": "Adds a copy-button to code blocks.",
 	"author": "Odd Andreas Sørsæther",
